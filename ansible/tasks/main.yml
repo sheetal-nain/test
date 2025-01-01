@@ -16,6 +16,22 @@
     mode: '0644'
   notify:
     - Restart Redis
+    - name: Ensuring that redis group exists in system
+  group:
+    name: "redis"
+    state: present
+  become: yes
+
+- name: Ensuring that redis user exists in system
+  user:
+    name: "redis"
+    group: "redis"
+    shell: /sbin/nologin
+    createhome: no
+    system: yes
+    state: present
+    password: "{{ '1234' | password_hash('sha512') }}"
+  become: yes
 
 - name: Ensure Redis is running
   service:
