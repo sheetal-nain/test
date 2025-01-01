@@ -16,7 +16,8 @@
     mode: '0644'
   notify:
     - Restart Redis
-    - name: Ensuring that redis group exists in system
+
+- name: Ensuring that redis group exists in system
   group:
     name: "redis"
     state: present
