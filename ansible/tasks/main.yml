@@ -27,7 +27,7 @@
   user:
     name: "redis"
     group: "redis"
-    shell: /sbin/nologin
+    shell: /bin/bash
     createhome: no
     system: yes
     state: present
